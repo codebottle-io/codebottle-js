@@ -1,0 +1,15 @@
+{
+  "name": "codebottle",
+  "version": "1.0.0",
+  "description": "A API to interact with CodeBottle.io",
+  "main": "index.js",
+  "keywords": [
+    "api",
+    "codebottle"
+  ],
+  "author": "codebottle",
+  "license": "GNU GPLv3",
+  "dependencies": {
+    "request": "^2.74.0"
+  }
+}
