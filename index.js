@@ -16,35 +16,40 @@ function getApiCall(url, cb) {
 function objToQuery(params) {
     return "?" + querystring.stringify(params);
 }
-
-function search(keywords, cb) {
-    getApiCall("/search.php" + objToQuery({
+function joinObj(obj1, obj2) {
+    var obj3 = {};
+    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+    for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+    return obj3;
+}
+function search(keywords, cb, opts) {
+    getApiCall("/search.php" + objToQuery(joinObj({
         keywords: keywords
-    }), function(obj, e) {
+    }, opts)), function(obj, e) {
         cb(obj.results, e)
     });
 }
 
-function get(id, cb) {
-    getApiCall("/get.php" + objToQuery({
+function get(id, cb, opts) {
+    getApiCall("/get.php" + objToQuery(joinObj({
         id: id
-    }), function(obj, e) {
+    }, opts)), function(obj, e) {
         cb(obj.data, e)
     });
 }
 
-function browse(limit, cb) {
-    getApiCall("/browse.php" + objToQuery({
+function browse(limit, cb, opts) {
+    getApiCall("/browse.php" + objToQuery(joinObj({
         limit: limit
-    }), function(obj, e) {
+    }, opts)), function(obj, e) {
         cb(obj.results, e)
     });
 }
 
-function verifySecure(token, cb) {
-    getApiCall("/verifysecure.php" + objToQuery({
+function verifySecure(token, cb, opts) {
+    getApiCall("/verifysecure.php" + objToQuery(joinObj({
         secure_token: token
-    }), function(obj, e) {
+    }, opts)), function(obj, e) {
         cb(obj.username, e)
     });
 }
