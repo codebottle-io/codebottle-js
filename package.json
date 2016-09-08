@@ -7,6 +7,9 @@
     "api",
     "codebottle"
   ],
+  "scripts": {
+    "test": "node test.js"
+  },
   "author": "codebottle",
   "license": "GNU GPLv3",
   "dependencies": {
