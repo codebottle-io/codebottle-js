@@ -1,6 +1,8 @@
 # codebottle-js [![Build Status](https://travis-ci.org/codebottle-io/codebottle-js.svg?branch=master)](https://travis-ci.org/codebottle-io/codebottle-js)
+
 A Node.js library to interact with CodeBottle's API.
 
+[![npmjs repository](https://nodei.co/npm/codebottle.png?downloads=true&stars=true)](https://www.npmjs.com/package/codebottle)
 Example:
 --------
 
