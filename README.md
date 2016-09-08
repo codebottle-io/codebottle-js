@@ -1,4 +1,4 @@
-# codebottle-js
+# codebottle-js [![Build Status](https://travis-ci.org/codebottle-io/codebottle-js.svg?branch=master)](https://travis-ci.org/codebottle-io/codebottle-js)
 A Node.js library to interact with CodeBottle's API.
 
 Example:
