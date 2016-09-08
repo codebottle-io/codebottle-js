@@ -54,9 +54,18 @@ function verifySecure(token, cb, opts) {
     });
 }
 
+function getProfile(username, cb, opts) {
+    getApiCall("/getprofile.php" + objToQuery(joinObj({
+        username: username
+    }, opts)), function(obj, e) {
+        cb(obj.profile, e)
+    });
+}
+
 module.exports = {
     search: search,
     get: get,
     browse: browse,
-    verifySecure: verifySecure
+    verifySecure: verifySecure,
+    getProfile: getProfile
 };
