@@ -11,7 +11,7 @@
     "test": "node test.js"
   },
   "author": "codebottle",
-  "license": "GNU GPLv3",
+  "license": "GPL-3.0",
   "dependencies": {
     "request": "^2.74.0"
   }
