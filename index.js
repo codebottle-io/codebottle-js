@@ -2,7 +2,7 @@ var fetch = require('isomorphic-fetch');
 var querystring = require("querystring");
 var helpers = require('./helpers.js');
 
-var apiUrl = "https://codebottle.io/api/v1";
+const apiUrl = "https://codebottle.io/api/v1";
 
 function objToQuery(params) {
     return "?" + querystring.stringify(params);
