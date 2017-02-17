@@ -1,12 +1,9 @@
 var fetch = require('isomorphic-fetch');
-var querystring = require("querystring");
+var queryString = require("querystring");
 var helpers = require('./helpers.js');
 
 const apiUrl = "https://codebottle.io/api/v1";
 
-function objToQuery(params) {
-    return "?" + querystring.stringify(params);
-}
 function joinObj(obj1, obj2) {
     var obj3 = {};
     for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
@@ -15,7 +12,7 @@ function joinObj(obj1, obj2) {
 }
 
 function search(keywords, cb, opts) {
-    return fetch(apiUrl + "/search.php" + objToQuery(joinObj({
+    return fetch(apiUrl + "/search.php?" + queryString.stringify(joinObj({
         keywords: keywords
     }, opts)))
         .then(helpers.handleResponse)
@@ -23,7 +20,7 @@ function search(keywords, cb, opts) {
 }
 
 function get(id, cb, opts) {
-    return fetch(apiUrl + "/get.php" + objToQuery(joinObj({
+    return fetch(apiUrl + "/get.php?" + queryString.stringify(joinObj({
         id: id
     }, opts)))
         .then(helpers.handleResponse)
@@ -31,7 +28,7 @@ function get(id, cb, opts) {
 }
 
 function browse(limit, cb, opts) {
-    return fetch(apiUrl + "/browse.php" + objToQuery(joinObj({
+    return fetch(apiUrl + "/browse.php?" + queryString.stringify(joinObj({
         limit: limit
     }, opts)))
         .then(helpers.handleResponse)
@@ -39,7 +36,7 @@ function browse(limit, cb, opts) {
 }
 
 function verifySecure(token, cb, opts) {
-    fetch(apiUrl + "/verifysecure.php" + objToQuery(joinObj({
+    fetch(apiUrl + "/verifysecure.php?" + queryString.stringify(joinObj({
         secure_token: token
     }, opts)))
         .then(helpers.handleResponse)
@@ -47,7 +44,7 @@ function verifySecure(token, cb, opts) {
 }
 
 function getProfile(username, cb, opts) {
-    fetch(apiUrl + "/getprofile.php" + objToQuery(joinObj({
+    fetch(apiUrl + "/getprofile.php?" + queryString.stringify(joinObj({
         username: username
     }, opts)))
         .then(helpers.handleResponse)
