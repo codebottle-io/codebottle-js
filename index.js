@@ -6,7 +6,7 @@ const apiUrl = "https://codebottle.io/api/v1";
 
 function search(keywords, cb, opts) {
     return fetch(apiUrl + "/search.php?" + queryString.stringify(Object.assign({
-        keywords: keywords
+        keywords
     }, opts)))
         .then(helpers.handleResponse)
         .then(json => json.results);
@@ -14,7 +14,7 @@ function search(keywords, cb, opts) {
 
 function get(id, cb, opts) {
     return fetch(apiUrl + "/get.php?" + queryString.stringify(Object.assign({
-        id: id
+        id
     }, opts)))
         .then(helpers.handleResponse)
         .then(json => json.data);
@@ -22,7 +22,7 @@ function get(id, cb, opts) {
 
 function browse(limit, cb, opts) {
     return fetch(apiUrl + "/browse.php?" + queryString.stringify(Object.assign({
-        limit: limit
+        limit
     }, opts)))
         .then(helpers.handleResponse)
         .then(json => json.results);
@@ -38,7 +38,7 @@ function verifySecure(token, cb, opts) {
 
 function getProfile(username, cb, opts) {
     fetch(apiUrl + "/getprofile.php?" + queryString.stringify(Object.assign({
-        username: username
+        username
     }, opts)))
         .then(helpers.handleResponse)
         .then(json => json.profile);
