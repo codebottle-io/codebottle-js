@@ -1,6 +1,6 @@
-var fetch = require('isomorphic-fetch');
-var queryString = require("querystring");
-var helpers = require('./helpers.js');
+const fetch = require('isomorphic-fetch');
+const queryString = require("querystring");
+const helpers = require('./helpers.js');
 
 const apiUrl = "https://codebottle.io/api/v1";
 
