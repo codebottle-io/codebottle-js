@@ -18,13 +18,13 @@ The library is very self-explanatory, really.
 
 Get an instance:
 
-```
+```JavaScript
 const codebottle = require('codebottle');
 ```
 
 And then you could do stuff like:
 
-```
+```JavaScript
 codebottle.search("awesome stuff to search")
 	.then(console.log) // Logs an array of snippets
 	.catch(error => {  // Something terrible happened.
@@ -37,7 +37,7 @@ Handling errors
 
 The `error` object thrown to `catch` contains two useful keys, `status` and `error`, here's an example:
 
-```
+```JavaScript
 {
 	status: 400,
 	error: "No id specified"
@@ -52,13 +52,13 @@ This isn't a the documentation that will span many pages and then you go by aski
 
 Basically each API action has its own defined method. Let's have an instance first:
 
-```
+```JavaScript
 const codebottle = require('codebottle');
 ```
 
 In this case, these functions are available:
 
-```
+```JavaScript
 codebottle.search
 codebottle.get
 codebottle.browse
