@@ -45,9 +45,9 @@ function getProfile(username, cb, opts) {
 }
 
 module.exports = {
-    search: search,
-    get: get,
-    browse: browse,
-    verifySecure: verifySecure,
-    getProfile: getProfile
+    search,
+    get,
+    browse,
+    verifySecure,
+    getProfile
 };
