@@ -1,17 +1,8 @@
-var request = require('request');
+var fetch = require('isomorphic-fetch');
 var querystring = require("querystring");
+var helpers = require('./helpers.js');
 
 var apiUrl = "https://codebottle.io/api/v1";
-
-function getApiCall(url, cb) {
-    request(apiUrl + url, function(error, response, body) {
-        if (!error) {
-            var result = JSON.parse(body);
-            if (result.status != 200) cb({}, new Error(result.error))
-            cb(result);
-        } else console.log(error)
-    });
-}
 
 function objToQuery(params) {
     return "?" + querystring.stringify(params);
@@ -22,44 +13,45 @@ function joinObj(obj1, obj2) {
     for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
     return obj3;
 }
+
 function search(keywords, cb, opts) {
-    getApiCall("/search.php" + objToQuery(joinObj({
+    return fetch(apiUrl + "/search.php" + objToQuery(joinObj({
         keywords: keywords
-    }, opts)), function(obj, e) {
-        cb(obj.results, e)
-    });
+    }, opts)))
+        .then(helpers.handleResponse)
+        .then(json => json.results);
 }
 
 function get(id, cb, opts) {
-    getApiCall("/get.php" + objToQuery(joinObj({
+    return fetch(apiUrl + "/get.php" + objToQuery(joinObj({
         id: id
-    }, opts)), function(obj, e) {
-        cb(obj.data, e)
-    });
+    }, opts)))
+        .then(helpers.handleResponse)
+        .then(json => json.data);
 }
 
 function browse(limit, cb, opts) {
-    getApiCall("/browse.php" + objToQuery(joinObj({
+    return fetch(apiUrl + "/browse.php" + objToQuery(joinObj({
         limit: limit
-    }, opts)), function(obj, e) {
-        cb(obj.results, e)
-    });
+    }, opts)))
+        .then(helpers.handleResponse)
+        .then(json => json.results);
 }
 
 function verifySecure(token, cb, opts) {
-    getApiCall("/verifysecure.php" + objToQuery(joinObj({
+    fetch(apiUrl + "/verifysecure.php" + objToQuery(joinObj({
         secure_token: token
-    }, opts)), function(obj, e) {
-        cb(obj.username, e)
-    });
+    }, opts)))
+        .then(helpers.handleResponse)
+        .then(json => json.username);
 }
 
 function getProfile(username, cb, opts) {
-    getApiCall("/getprofile.php" + objToQuery(joinObj({
+    fetch(apiUrl + "/getprofile.php" + objToQuery(joinObj({
         username: username
-    }, opts)), function(obj, e) {
-        cb(obj.profile, e)
-    });
+    }, opts)))
+        .then(helpers.handleResponse)
+        .then(json => json.profile);
 }
 
 module.exports = {

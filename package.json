@@ -10,6 +10,6 @@
   "author": "codebottle",
   "license": "GPL-3.0",
   "dependencies": {
-    "request": "^2.74.0"
+    "isomorphic-fetch": "^2.2.1"
   }
 }
