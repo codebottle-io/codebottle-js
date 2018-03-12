@@ -1,15 +1,26 @@
 {
   "name": "codebottle",
-  "version": "0.1.0",
-  "description": "A API to interact with CodeBottle.io",
+  "version": "0.2.0",
+  "description": "An API to interact with codebottle.io",
   "main": "index.js",
   "keywords": [
     "api",
     "codebottle"
   ],
+  "scripts": {
+    "build": "npm run build:clean && babel src --out-dir lib",
+    "build:clean": "rm -r lib/*"
+  },
   "author": "codebottle",
   "license": "GPL-3.0",
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1"
+    "axios": "^0.18.0",
+    "querystring": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.18.2"
   }
 }

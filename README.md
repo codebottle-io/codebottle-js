@@ -1,4 +1,4 @@
-# codebottle-js
+# codebottle-js [![Snippets Stats](https://codebottle.io/embed/search-badge?keywords=codebottle-js&language=6)](https://codebottle.io/?q=codebottle-js)
 
 A Node.js library to interact with CodeBottle's API.
 
@@ -8,65 +8,47 @@ Installing
 ----------
 
 ```
-npm install codebottle
+npm i codebottle
 ```
 
-Usage
+Quick start
 --------
-
-The library is very self-explanatory, really.
-
-Get an instance:
+> The library works as you expect it to.
 
 ```JavaScript
 const codebottle = require('codebottle');
+codebottle.getLatest().then(console.log);
 ```
-
-And then you could do stuff like:
-
-```JavaScript
-codebottle.search("awesome stuff to search")
-	.then(console.log) // Logs an array of snippets
-	.catch(error => {  // Something terrible happened.
-		// idk, deal with it.
-	});
-```
-
-Handling errors
----------
-
-The `error` object thrown to `catch` contains two useful keys, `status` and `error`, here's an example:
-
-```JavaScript
-{
-	status: 400,
-	error: "No id specified"
-}
-```
-
 
 Documentation
----------
+--------
 
-This isn't a the documentation that will span many pages and then you go by asking a question in some whatever place about an issue then you get referred to read the docs but then you never find the actual piece of information you need just because the doc is silly and long and/or you can't actually understand what the doc is trying to tell you.
+- All functions return **Promises.** This means you can `await` things.
+- All responses have `_status` field, which is the HTTP status. This does **NOT** include errors
 
-Basically each API action has its own defined method. Let's have an instance first:
-
-```JavaScript
-const codebottle = require('codebottle');
-```
-
-In this case, these functions are available:
+#### Available functions
 
 ```JavaScript
-codebottle.search
-codebottle.get
-codebottle.browse
-codebottle.verifySecure
-codebottle.getProfile
+codebottle.search(keywords, language);      // Search snippets, language (id) is optional
+codebottle.getLatest();                     // Gets latest snippets
+codebottle.get(id);                         // Get snippet by ID
+codebottle.getCategories();                 // Gets all categories
+codebottle.getCategory(id);                 // Gets category by ID
+codebottle.getLanguages();                  // Gets all languages
+codebottle.getLanguage(id);                 // Get language by ID
 ```
 
-Parameters are self-explanatory, really. All functions take an extra parameter, `opts`, which is additional parameters to pass directly to the API, in the form of an object.
+#### Response
 
+The response is simply the API response itself, but the `_status` field added to it. See [CodeBottle's documentation](https://codebottle.io/api/docs/getting-started) to get an idea what different requests return.
 
-> If you actually think that this doc stinks, just PR a change, put it in a wiki or something, idk
+#### Catching failures
+
+Since what you get is a promise, all there to it is to use `.catch`:
+
+```JavaScript
+codebottle.getLatest().then(console.log)
+    .catch(error => console.error('duh fix your internet'));
+```
+
+>Errors are thrown when the API returns a non-200 status code. (such as bad parameters)
