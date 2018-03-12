@@ -1,6 +1,6 @@
 {
   "name": "codebottle",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "An API to interact with codebottle.io",
   "main": "lib/index.js",
   "keywords": [
@@ -14,14 +14,14 @@
   "author": "codebottle",
   "license": "GPL-3.0",
   "dependencies": {
-    "axios": "^0.18.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "rimraf": "^2.6.2"
+    "axios": "^0.18.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "eslint": "^4.18.2"
+    "eslint": "^4.18.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "rimraf": "^2.6.2"
   }
 }
