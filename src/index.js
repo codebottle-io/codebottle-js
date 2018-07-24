@@ -11,7 +11,7 @@ module.exports = {
 				language,
 			}
 		}).then(response => ({
-			...response.data,
+			...response.data.data,
 			_status: response.status,
 		}));
 	},
@@ -19,7 +19,7 @@ module.exports = {
 	get: id => {
 		return axios.get(helpers.apiUrl(`/snippets/${id}`))
 			.then(response => ({
-				...response.data,
+				...response.data.data,
 				_status: response.status,
 			}));
 	},
@@ -27,7 +27,7 @@ module.exports = {
 	getLatest: () => {
 		return axios.get(helpers.apiUrl('/snippets/new'))
 			.then(response => ({
-				...response.data,
+				...response.data.data,
 				_status: response.status,
 			}));
 	},
@@ -35,7 +35,7 @@ module.exports = {
 	getCategories: () => {
 		return axios.get(helpers.apiUrl('/categories'))
 			.then(response => ({
-				...response.data,
+				...response.data.data,
 				_status: response.status,
 			}));
 	},
@@ -43,7 +43,7 @@ module.exports = {
 	getCategory: id => {
 		return axios.get(helpers.apiUrl(`/categories/${id}`))
 			.then(response => ({
-				...response.data,
+				...response.data.data,
 				_status: response.status,
 			}));
 	},
@@ -51,7 +51,7 @@ module.exports = {
 	getLanguages: () => {
 		return axios.get(helpers.apiUrl('/languages'))
 			.then(response => ({
-				...response.data,
+				...response.data.data,
 				_status: response.status,
 			}));
 	},
@@ -59,7 +59,7 @@ module.exports = {
 	getLanguage: id => {
 		return axios.get(helpers.apiUrl(`/languages/${id}`))
 			.then(response => ({
-				...response.data,
+				...response.data.data,
 				_status: response.status,
 			}));
 	},
