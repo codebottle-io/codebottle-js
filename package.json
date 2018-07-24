@@ -1,6 +1,6 @@
 {
   "name": "codebottle",
-  "version": "1.2.3",
+  "version": "0.3.3",
   "description": "An API to interact with codebottle.io",
   "main": "lib/index.js",
   "keywords": [
