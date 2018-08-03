@@ -15,7 +15,9 @@ module.exports = {
 			headers
 		}).then(response => ([
 			...response.data.data,
-		]));
+		])).catch(e => {
+			throw e;
+		});
 	},
 
 	get: id => {
@@ -23,7 +25,9 @@ module.exports = {
 			headers
 		}).then(response => ({
 			...response.data.data,
-		}));
+		})).catch(e => {
+			throw e;
+		});
 	},
 
 	getLatest: () => {
@@ -31,7 +35,9 @@ module.exports = {
 			headers
 		}).then(response => ([
 			...response.data.data,
-		]));
+		])).catch(e => {
+			throw e;
+		});
 	},
 
 	getCategories: () => {
@@ -39,7 +45,9 @@ module.exports = {
 			headers
 		}).then(response => ([
 			...response.data.data,
-		]));
+		])).catch(e => {
+			throw e;
+		});
 	},
 
 	getCategory: id => {
@@ -47,7 +55,9 @@ module.exports = {
 			headers
 		}).then(response => ({
 			...response.data.data,
-		}));
+		})).catch(e => {
+			throw e;
+		});
 	},
 
 	getLanguages: () => {
@@ -55,7 +65,9 @@ module.exports = {
 			headers
 		}).then(response => ([
 			...response.data.data,
-		]));
+		])).catch(e => {
+			throw e;
+		});
 	},
 
 	getLanguage: id => {
@@ -63,6 +75,8 @@ module.exports = {
 			headers
 		}).then(response => ({
 			...response.data.data,
-		}));
+		})).catch(e => {
+			throw e;
+		});
 	},
 };
