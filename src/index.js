@@ -14,7 +14,7 @@ module.exports = {
 			},
 			headers
 		}).then(response => ([
-			...response.data.data,
+			...response.data,
 		])).catch(e => {
 			throw e;
 		});
@@ -24,7 +24,7 @@ module.exports = {
 		return axios.get(helpers.apiUrl(`/snippets/${id}`), {
 			headers
 		}).then(response => ({
-			...response.data.data,
+			...response.data,
 		})).catch(e => {
 			throw e;
 		});
@@ -34,7 +34,7 @@ module.exports = {
 		return axios.get(helpers.apiUrl('/snippets/new'), {
 			headers
 		}).then(response => ([
-			...response.data.data,
+			...response.data,
 		])).catch(e => {
 			throw e;
 		});
@@ -44,7 +44,7 @@ module.exports = {
 		return axios.get(helpers.apiUrl('/categories'), {
 			headers
 		}).then(response => ([
-			...response.data.data,
+			...response.data,
 		])).catch(e => {
 			throw e;
 		});
@@ -54,7 +54,7 @@ module.exports = {
 		return axios.get(helpers.apiUrl(`/categories/${id}`), {
 			headers
 		}).then(response => ({
-			...response.data.data,
+			...response.data,
 		})).catch(e => {
 			throw e;
 		});
@@ -64,7 +64,7 @@ module.exports = {
 		return axios.get(helpers.apiUrl('/languages'), {
 			headers
 		}).then(response => ([
-			...response.data.data,
+			...response.data,
 		])).catch(e => {
 			throw e;
 		});
@@ -74,7 +74,7 @@ module.exports = {
 		return axios.get(helpers.apiUrl(`/languages/${id}`), {
 			headers
 		}).then(response => ({
-			...response.data.data,
+			...response.data,
 		})).catch(e => {
 			throw e;
 		});
