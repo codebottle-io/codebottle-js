@@ -1,82 +1,31 @@
-const axios = require('axios');
-const helpers = require('./helpers');
+const fetch = require('@v0id/fetch');
+const { inspect: { custom } } = require('util');
 
-const headers = {
-	'Accept': 'application/vnd.codebottle.v1+json'
+const CODEBOTTLE = 'https://api.codebottle.io';
+const headers = { Accept: 'application/vnd.codebottle+json' };
+
+const functions = ['snippets', 'languages', 'categories'];
+const reflectors = ['toString', 'valueOf', 'inspect', custom, Symbol.toPrimitive];
+
+const handler = {
+  get: (list, name) => {
+    if (reflectors.includes(name)) return () => list.join('/');
+    if (functions.includes(name)) {
+      for (const r of reflectors) ID[r] = () => `${list.join('/')}/${name}`;
+      return ID.bind(null, list, name);
+    }
+    if (name in fetch) {
+      return (query = {}) =>
+        new fetch(name.toUpperCase(), list.join('/'), { headers, query }).then(res => res.body);
+    }
+    return new Proxy(list.concat(name), handler);
+  },
 };
 
-module.exports = {
-	search: (keywords, language) => {
-		return axios.get(helpers.apiUrl('/snippets'), {
-			params: {
-				keywords,
-				language,
-			},
-			headers
-		}).then(response => ([
-			...response.data,
-		])).catch(e => {
-			throw e;
-		});
-	},
+function ID(list, name, id) {
+  list = list.concat(name);
+  if (id) list = list.concat(id);
+  return new Proxy(list, handler);
+}
 
-	get: id => {
-		return axios.get(helpers.apiUrl(`/snippets/${id}`), {
-			headers
-		}).then(response => ({
-			...response.data,
-		})).catch(e => {
-			throw e;
-		});
-	},
-
-	getLatest: () => {
-		return axios.get(helpers.apiUrl('/snippets/new'), {
-			headers
-		}).then(response => ([
-			...response.data,
-		])).catch(e => {
-			throw e;
-		});
-	},
-
-	getCategories: () => {
-		return axios.get(helpers.apiUrl('/categories'), {
-			headers
-		}).then(response => ([
-			...response.data,
-		])).catch(e => {
-			throw e;
-		});
-	},
-
-	getCategory: id => {
-		return axios.get(helpers.apiUrl(`/categories/${id}`), {
-			headers
-		}).then(response => ({
-			...response.data,
-		})).catch(e => {
-			throw e;
-		});
-	},
-
-	getLanguages: () => {
-		return axios.get(helpers.apiUrl('/languages'), {
-			headers
-		}).then(response => ([
-			...response.data,
-		])).catch(e => {
-			throw e;
-		});
-	},
-
-	getLanguage: id => {
-		return axios.get(helpers.apiUrl(`/languages/${id}`), {
-			headers
-		}).then(response => ({
-			...response.data,
-		})).catch(e => {
-			throw e;
-		});
-	},
-};
+module.exports = new Proxy([CODEBOTTLE], handler);
