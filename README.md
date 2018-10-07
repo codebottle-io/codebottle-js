@@ -12,9 +12,9 @@ Request is never sent until you call one of HTTP methods
 import bottle from 'codebottle';
 
 // somewhere in async function
-const { data } = await bottle.snippets('f063cc6e0b').get();
+const { title } = await bottle.snippets('f063cc6e0b').get();
 
-console.log(data.title);
+console.log(title);
 ```
 
 You can pass query data to HTTP method call
