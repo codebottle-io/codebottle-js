@@ -1,5 +1,7 @@
 const bottle = require('./api');
 
+let warning = false;
+
 module.exports = {
   bottle,
   version: require('../package.json').version,
@@ -31,5 +33,13 @@ module.exports = {
 
   get categories() {
     return bottle().categories().get();
+  },
+
+  get(key) {
+    if (!warning) {
+      process.stderr.write('.get() is deprecated please use .fetch() (2.x removal)\n');
+      this.warning = true;
+    }
+    this.fetch(key);
   },
 };
