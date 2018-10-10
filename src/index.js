@@ -22,7 +22,7 @@ module.exports = {
 
 
   get latest() {
-    return bottle().snippets('new').get();
+    return bottle().snippets().get();
   },
 
   get languages() {
