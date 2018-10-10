@@ -37,9 +37,9 @@ module.exports = {
 
   get(key) {
     if (!warning) {
-      process.stderr.write('.get() is deprecated please use .fetch() (2.x removal)\n');
       this.warning = true;
+      process.stderr.write('.get() is deprecated please use .fetch() (2.x removal)\n');
     }
-    this.fetch(key);
+    return this.fetch(key);
   },
 };
