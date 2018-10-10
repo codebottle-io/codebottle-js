@@ -1,55 +1,45 @@
-# codebottle-js [![Snippets Stats](https://codebottle.io/embed/search-badge?keywords=codebottle-js&language=6)](https://codebottle.io/?q=codebottle-js)
+<div align="center">
+  <img alt="CodeBottle" src=""></img>
 
-A Node.js library to interact with CodeBottle's API.
+<a href="https://discord.gg/"><img src="https://discordapp.com/api/guilds/222487241321086976/embed.png" alt="discord guild"/></a>
+<a href="https://www.npmjs.com/codebottle"><img src="https://img.shields.io/npm/v/codebottle.svg?maxAge=3600" alt="version"/></a>
+[![Build Status](https://travis-ci.com/codebottle-io/codebottle-js.svg?branch=master)](https://travis-ci.com/codebottle-io/codebottle-js)
+<a href="https://www.npmjs.com/codebottle"><img src="https://img.shields.io/npm/dt/codebottle.svg?maxAge=3600" alt="downloads"/></a>
+</div>
 
-[![npmjs repository](https://nodei.co/npm/codebottle.png?downloads=true&stars=true)](https://www.npmjs.com/package/codebottle)
+# Install
+`npm i simulor`
 
-Installing
-----------
+`yarn add simulor`
 
-```
-npm i codebottle
-```
+# Usage
+All requests return [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+```js
+import bottle from 'bottle';
 
-Quick start
---------
-> The library works as you expect it to.
+// ...
 
-```JavaScript
-const codebottle = require('codebottle');
-codebottle.latest.then(console.log);
-```
-
-Documentation
---------
-
-- All functions return **Promises.** This means you can `await` things.
-
-#### Available functions
-
-```JavaScript
-codebottle.search({ query, language });      // Search snippets, language (id) is optional
-codebottle.fetch(id);                         // Get snippet by ID
-codebottle.category(id);                 // Gets category by ID
-codebottle.language(id);                 // Get language by ID
-
-// All of these still return Promise
-codebottle.latest;                     // Gets latest snippets
-codebottle.languages;                  // Gets all languages
-codebottle.categories;                 // Gets all categories
+const data = await bottle.latest;
+const { id, code, title, username } = await bottle.fetch('f063cc6e0b');
 ```
 
-#### Response
+All library methods and getters
 
-The response is simply the API response itself. See [CodeBottle's documentation](https://codebottle.io/api/docs/getting-started) to get an idea what different requests return.
+```js
+// Fetch specific snippet by key
+bottle.fetch(key)
 
-#### Catching failures
+// Fetch language or category by key
+bottle.language(key);
+bottle.category(key);
 
-Since what you get is a promise, all there to it is to use `.catch`:
+// Find snippets with query and with optional language id
+bottle.search({ query, language })
 
-```JavaScript
-codebottle.latest.then(console.log)
-    .catch(error => console.error('duh fix your internet'));
+// Fetch latest snippets
+codebottle.latest;
+
+// Fetch all languages or categories
+codebottle.languages;
+codebottle.categories;
 ```
-
->Errors are thrown when the API returns a non-200 status code. (such as bad parameters)
