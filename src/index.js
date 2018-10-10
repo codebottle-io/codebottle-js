@@ -1,82 +1,35 @@
-const axios = require('axios');
-const helpers = require('./helpers');
-
-const headers = {
-	'Accept': 'application/vnd.codebottle.v1+json'
-};
+const bottle = require('./api');
 
 module.exports = {
-	search: (keywords, language) => {
-		return axios.get(helpers.apiUrl('/snippets'), {
-			params: {
-				keywords,
-				language,
-			},
-			headers
-		}).then(response => ([
-			...response.data,
-		])).catch(e => {
-			throw e;
-		});
-	},
+  bottle,
+  version: require('../package.json').version,
 
-	get: id => {
-		return axios.get(helpers.apiUrl(`/snippets/${id}`), {
-			headers
-		}).then(response => ({
-			...response.data,
-		})).catch(e => {
-			throw e;
-		});
-	},
+  fetch(key) {
+    return bottle.snippets(key).get();
+  },
 
-	getLatest: () => {
-		return axios.get(helpers.apiUrl('/snippets/new'), {
-			headers
-		}).then(response => ([
-			...response.data,
-		])).catch(e => {
-			throw e;
-		});
-	},
+  search({ query, language }) {
+    return bottle().snippets().get({ language, keywords: query });
+  },
 
-	getCategories: () => {
-		return axios.get(helpers.apiUrl('/categories'), {
-			headers
-		}).then(response => ([
-			...response.data,
-		])).catch(e => {
-			throw e;
-		});
-	},
+  language(key) {
+    return bottle().languages(key).get();
+  },
 
-	getCategory: id => {
-		return axios.get(helpers.apiUrl(`/categories/${id}`), {
-			headers
-		}).then(response => ({
-			...response.data,
-		})).catch(e => {
-			throw e;
-		});
-	},
+  category(key) {
+    return bottle().categories(key).get();
+  },
 
-	getLanguages: () => {
-		return axios.get(helpers.apiUrl('/languages'), {
-			headers
-		}).then(response => ([
-			...response.data,
-		])).catch(e => {
-			throw e;
-		});
-	},
 
-	getLanguage: id => {
-		return axios.get(helpers.apiUrl(`/languages/${id}`), {
-			headers
-		}).then(response => ({
-			...response.data,
-		})).catch(e => {
-			throw e;
-		});
-	},
+  get latest() {
+    return bottle().snippets().get();
+  },
+
+  get languages() {
+    return bottle().languages().get();
+  },
+
+  get categories() {
+    return bottle().categories().get();
+  },
 };
