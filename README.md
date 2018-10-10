@@ -1,7 +1,7 @@
 <div align="center">
-  <img alt="CodeBottle" src=""></img>
+  <img alt="CodeBottle" src="https://github.com/codebottle-io/codebottle-js/raw/master/assets/bottle.png"></img>
 
-<a href="https://discord.gg/"><img src="https://discordapp.com/api/guilds/222487241321086976/embed.png" alt="discord guild"/></a>
+<a href="https://discord.gg/2Sd8Um3"><img src="https://discordapp.com/api/guilds/222487241321086976/embed.png" alt="discord guild"/></a>
 <a href="https://www.npmjs.com/codebottle"><img src="https://img.shields.io/npm/v/codebottle.svg?maxAge=3600" alt="version"/></a>
 [![Build Status](https://travis-ci.com/codebottle-io/codebottle-js.svg?branch=master)](https://travis-ci.com/codebottle-io/codebottle-js)
 <a href="https://www.npmjs.com/codebottle"><img src="https://img.shields.io/npm/dt/codebottle.svg?maxAge=3600" alt="downloads"/></a>
