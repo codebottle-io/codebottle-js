@@ -2,15 +2,15 @@ language: node_js
 node_js:
   - 10
 
- install: npm install
+install: npm install
 
- script:
+script:
   - npm run lint
   - npm run test
 
- cache:
+cache:
   directories:
     - node_modules
 
- notifications:
+notifications:
   email: false
