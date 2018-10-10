@@ -2,7 +2,7 @@ const fetch = require('@v0id/fetch');
 const { inspect: { custom } } = require('util');
 
 const { DOMAIN, HEADERS } = require('./constants');
-const reflectors = ['toString', 'valueOf', 'inspect', custom, Symbol.toPrimitive];
+const reflectors = ['toString', 'valueOf', custom, Symbol.toPrimitive];
 
 const traps = {
   get(path, name) {
