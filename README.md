@@ -8,9 +8,9 @@
 </div>
 
 # Install
-`npm i simulor`
+`npm i codebottle`
 
-`yarn add simulor`
+`yarn add codebottle`
 
 # Usage
 All requests return [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
