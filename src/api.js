@@ -10,7 +10,7 @@ const traps = {
 
     if (name in fetch) {
       return (query = {}) =>
-        new fetch(name.toUpperCase(), path().join('/'), { query, headers: HEADERS })
+        new fetch[name](path().join('/'), { query, headers: HEADERS })
           .then(res => res.body);
     }
 
