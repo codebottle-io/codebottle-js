@@ -1,10 +1,9 @@
 const bottle = require('./api');
-const { version } = require('../package.json');
 
 let warning = false;
 
 module.exports = {
-  bottle, version,
+  bottle,
 
   fetch(key) {
     return bottle.snippets(key).get();

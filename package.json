@@ -4,7 +4,10 @@
   "description": "🍾 API wrapper for codebottle.io",
   
   "license": "GPL-3.0",
+  "unpkg": "browser.js",
   "main": "src/index.js",
+  "jsdelivr": "browser.js",
+
   "engines": {
     "node": ">=8"
   },
@@ -45,6 +48,7 @@
     "build:browser": "webpack-cli -p",
     "lint": "eslint --ext=js,mjs src/",
     "test": "node --experimental-modules test/",
-    "lint:fix": "eslint --fix --ext=js,mjs src/"
+    "lint:fix": "eslint --fix --ext=js,mjs src/",
+    "prepublishOnly": "npm run lint && npm run test && npm run build:browser"
   }
 }
