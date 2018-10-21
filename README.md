@@ -26,7 +26,7 @@ const { id, code, title, username } = await bottle.fetch('f063cc6e0b');
 
 // advanced api wrapper (without docs)
 // recommended to not use it unless you know how to use it
-const data = await bottle.bottle.snippets('f063cc6e0b').get();
+const data = await bottle.api.snippets('f063cc6e0b').get();
 ```
 
 All library methods and getters
