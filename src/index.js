@@ -1,37 +1,37 @@
-const bottle = require('./api');
+const api = require('./api');
 
 let warning = false;
 
 module.exports = {
-  bottle,
+  api,
 
   fetch(key) {
-    return bottle.snippets(key).get();
+    return api.snippets(key).get();
   },
 
   search({ query, language }) {
-    return bottle().snippets().get({ language, keywords: query });
+    return api().snippets().get({ language, keywords: query });
   },
 
   language(key) {
-    return bottle().languages(key).get();
+    return api().languages(key).get();
   },
 
   category(key) {
-    return bottle().categories(key).get();
+    return api().categories(key).get();
   },
 
 
   get latest() {
-    return bottle().snippets().get();
+    return api().snippets().get();
   },
 
   get languages() {
-    return bottle().languages().get();
+    return api().languages().get();
   },
 
   get categories() {
-    return bottle().categories().get();
+    return api().categories().get();
   },
 
   get(key) {
