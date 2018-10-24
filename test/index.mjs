@@ -5,7 +5,7 @@ const tests = new Simulor;
 const BASE = (str = '') => `https://api.codebottle.io${str}`;
 
 tests.add('constructing api url', t => {
-  const api = bottle.bottle;
+  const api = bottle.api;
 
   t.equal(api.toString(), BASE());
   t.equal(api.snippets().toString(), BASE('/snippets'));
