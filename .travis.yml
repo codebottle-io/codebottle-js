@@ -4,9 +4,6 @@ node_js:
 
 install: npm install
 
-script:
-  
-
 jobs:
   include:
     - stage: test
