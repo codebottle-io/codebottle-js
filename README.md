@@ -18,7 +18,7 @@ All requests return [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaS
 
 For examples see [test/index.mjs](https://github.com/codebottle=io/codebottle-js/blob/master/test/index.mjs)
 ```js
-import bottle from 'bottle';
+import bottle from 'codebottle';
 
 // ...
 

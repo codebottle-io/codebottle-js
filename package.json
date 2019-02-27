@@ -34,8 +34,8 @@
   },
   "devDependencies": {
     "eslint": "^5.6.1",
-    "webpack": "^4.20.2",
     "simulor": "^1.1.6",
+    "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
     "eslint-config-void": "^1.0.1"
   },
@@ -45,6 +45,7 @@
     "url": "git+https://github.com/codebottle-io/codebottle-js.git"
   },
   "scripts": {
+    "build": "npm run build:browser",
     "build:browser": "webpack-cli -p",
     "lint": "eslint --ext=js,mjs src/",
     "test": "node --experimental-modules test/",
