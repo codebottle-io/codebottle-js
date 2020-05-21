@@ -16,7 +16,7 @@
 # Usage
 All requests return [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-For examples see [test/index.mjs](https://github.com/codebottle=io/codebottle-js/blob/master/test/index.mjs)
+For examples see [test/index.mjs](https://github.com/codebottle-io/codebottle-js/blob/master/test/index.mjs)
 ```js
 import bottle from 'codebottle';
 
